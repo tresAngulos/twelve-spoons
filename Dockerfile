@@ -1,2 +1,2 @@
 FROM golang:latest
-label maintainer="your mother!"
+label maintainer="your mother"
