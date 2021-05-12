@@ -1,9 +1,7 @@
 pipeline {
     agent { docker { image 'golang' } }
+    triggers { githubPush() }
     stages {
-        triggers {
-            githubPush()
-        }
         stage('build') {
             steps {
                 sh 'go version'
