@@ -1,17 +1,8 @@
 pipeline {
     agent { docker { image 'golang' } }
     stages {
-        stage('Checkout SCM') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: 'main']],
-                    userRemoteConfigs: [[
-                        url: 'git@github.com/tresAngulos/twelve-spoons.git',
-                        credentialsId: '',
-                    ]]
-                ])
-            }
+        triggers {
+            githubPush()
         }
         stage('build') {
             steps {
